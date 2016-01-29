@@ -1,3 +1,6 @@
+(defconst djr-org-packages
+  '(org (org-crypt :location built-in)))
+
 (defun djr-org/post-init-org ()
   (org-clock-persistence-insinuate)
 
@@ -256,8 +259,5 @@
         (djr/agenda-notebook))
     (switch-to-buffer "*Org Agenda*")
     (delete-other-windows)))
-
-(defconst djr-org-packages
-  '(org (org-crypt :location built-in)))
 
 ;;; packages.el ends here

@@ -12,11 +12,16 @@
      emacs-lisp
      git
      markdown
-     org
      spell-checking
      syntax-checking
 
+     (shell :variables shell-default-shell 'eshell
+            :shell-enable-smart-eshell t)
+
+     djr
      djr-org
+     ;;mu4e
+     ;;djr-mu4e
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-excluded-packages '()
@@ -204,6 +209,7 @@ layers configuration. You are free to put any user code."
  '(package-selected-packages
    (quote
     (helm-company helm-c-yasnippet company-statistics company-quickhelp company auto-yasnippet ac-ispell xterm-color toc-org smeargle shell-pop orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets multi-term mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-flyspell gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flycheck-pos-tip flycheck evil-magit eshell-prompt-extras esh-help auto-dictionary zenburn-theme monokai-theme solarized-theme window-numbering volatile-highlights vi-tilde-fringe spaceline smooth-scrolling rainbow-delimiters persp-mode pcre2el paradox open-junk-file neotree move-text lorem-ipsum linum-relative leuven-theme info+ indent-guide hungry-delete highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-mode-manager helm-make helm-ag google-translate golden-ratio flx-ido fancy-battery expand-region evil-tutor evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-args evil-anzu eval-sexp-fu define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ws-butler which-key use-package spacemacs-theme restart-emacs quelpa popwin page-break-lines macrostep ido-vertical-mode hl-todo help-fns+ helm-projectile helm-flx helm-descbinds fill-column-indicator exec-path-from-shell evil-visualstar evil-surround evil-escape elisp-slime-nav bind-map auto-compile)))
+ '(paradox-github-token t)
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
@@ -242,4 +248,5 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
