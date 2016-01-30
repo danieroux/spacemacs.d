@@ -22,3 +22,5 @@
                    (interactive)
                    (enlarge-window -1)
                    (enlarge-window -1 t)))
+
+(bind-key* "M-SPC" 'helm-mini)

@@ -160,14 +160,19 @@ values."
   (setq exec-path (cons "/usr/local/bin" exec-path))
   (require 'private-config)
 
+  (setq debug-on-error t)
+
   (when (equal system-type 'darwin)
     (setq *osx* t)
     (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)))
 
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
+  (use-package shell)
+  (djr/sync-mail-and-update-mu4e)
+
+  (setq shell-default-shell 'eshell
+        shell-enable-smart-eshell t
+        shell-protect-eshell-prompt t)
 
   (setq powerline-default-separator 'nil))
 
