@@ -152,6 +152,13 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
+
+  ;; This is hackish. It is also needed
+  (add-to-list 'load-suffixes ".el.gpg")
+  (add-to-load-path "~/.spacemacs.d/private")
+  (setq exec-path (cons "/usr/local/bin" exec-path))
+  (require 'private-config)
+
   (when (equal system-type 'darwin)
     (setq *osx* t)
     (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)))
