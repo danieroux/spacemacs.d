@@ -20,8 +20,8 @@
 
      djr
      djr-org
-     ;;mu4e
-     ;;djr-mu4e
+     djr-id-manager
+     djr-mu4e
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-excluded-packages '()
