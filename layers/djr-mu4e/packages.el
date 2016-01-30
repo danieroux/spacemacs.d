@@ -1,9 +1,17 @@
 (defconst djr-mu4e-packages
   '((mu4e :location built-in)
     (mu4e-contrib :location built-in)
-    (org-mu4e)
+    org-mu4e
+    s
     (djr-org-mu4e :location local)
+    (djr-mu4e-mbsync :location local)
     (smtpmail :location built-in)))
+
+(defun djr-mu4e/init-mu4e-contrib ()
+  (use-package mu4e-contrib))
+
+(defun djr-mu4e/init-djr-mu4e-mbsync ()
+  (use-package djr-mu4e-mbsync))
 
 (defun djr-mu4e/pre-init-mu4e ()
   (defvar djr-mu4e-combined-inbox-bookmark "(maildir:/INBOX OR maildir:/[Gmail]/.Starred) AND NOT flag:trashed" "What I consider to be my 'inbox'")
@@ -30,8 +38,7 @@
   (setq mu4e-trash-folder  "/not-really-trash")
   (setq mu4e-refile-folder "/gtd")
 
-  (setq mail-host-address "weft"
-        mu4e-get-mail-command "true")
+  (setq mu4e-get-mail-command "true")
 
   (when *osx*
     (progn
@@ -85,7 +92,8 @@
       (remove-hook 'text-mode-hook 'turn-on-auto-fill))))
 
 (defun djr-mu4e/post-init-mu4e ()
-  (evil-set-initial-state 'mu4e-headers-mode 'emacs))
+  (evil-set-initial-state 'mu4e-headers-mode 'emacs)
+  (evil-set-initial-state 'mu4e-view-mode 'emacs))
 
 (defun djr-mu4e/init-smtpmail ()
   (use-package smtpmail

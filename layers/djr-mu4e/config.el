@@ -1,1 +1,1 @@
-(configuration-layer/declare-layer 'mu4e)
+(configuration-layer/declare-layers '(mu4e shell))
