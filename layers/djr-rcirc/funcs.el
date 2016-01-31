@@ -9,3 +9,9 @@
       (let* ((server (second (s-split "@znc-" a-buffer-name))))
         (format "#%s-g@znc-%s" server server))
     a-buffer-name))
+
+(defun djr/rcirc ()
+  (interactive)
+  (ignore-errors
+    (async-shell-command "/usr/local/sbin/bitlbee -D"))
+  (rcirc nil))
