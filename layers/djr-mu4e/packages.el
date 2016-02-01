@@ -40,7 +40,7 @@
 
   (setq mu4e-get-mail-command "true")
 
-  (when *osx*
+  (when (spacemacs/system-is-mac)
     (progn
       (setq mu4e-mu-binary "/usr/local/bin/mu"
             mail-host-address "danie-notebook")))
