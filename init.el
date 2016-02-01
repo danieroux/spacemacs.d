@@ -23,6 +23,7 @@
      djr-id-manager
      djr-mu4e
      djr-rcirc
+     djr-shell
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-excluded-packages '()
@@ -169,10 +170,6 @@ values."
 (defun dotspacemacs/user-config ()
   (use-package shell)
   (djr/sync-mail-and-update-mu4e)
-
-  (setq shell-default-shell 'eshell
-        shell-enable-smart-eshell t
-        shell-protect-eshell-prompt t)
 
   (setq powerline-default-separator 'nil))
 
