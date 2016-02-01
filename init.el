@@ -15,6 +15,7 @@
      spell-checking
      syntax-checking
      osx
+     chrome
 
      (shell :variables shell-default-shell 'eshell
             :shell-enable-smart-eshell t)
