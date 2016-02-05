@@ -157,20 +157,14 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-
-  ;; This is hackish. It is also needed
+  ;; This really should be the default
   (add-to-list 'load-suffixes ".el.gpg")
-  (add-to-load-path "~/.spacemacs.d/private")
-  (setq exec-path (cons "/usr/local/bin" exec-path))
-  (require 'private-config)
+  (add-to-load-path "~/.spacemacs.d")
 
-  (setq debug-on-error t))
+  (require 'djr-init))
 
 (defun dotspacemacs/user-config ()
-  (use-package shell)
-  (djr/sync-mail-and-update-mu4e)
-
-  (setq powerline-default-separator 'nil))
+  (require 'djr-config))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
