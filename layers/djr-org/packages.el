@@ -1,6 +1,9 @@
 (defconst djr-org-packages
   '(org (org-crypt :location built-in)))
 
+(defun org/init-org-bullets ()
+  (message "Suppressing org-bullets support. It's slow, and buggy."))
+
 (defun djr-org/post-init-org ()
   (org-clock-persistence-insinuate)
 
