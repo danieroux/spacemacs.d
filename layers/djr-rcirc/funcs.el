@@ -15,3 +15,39 @@
   (ignore-errors
     (async-shell-command "/usr/local/sbin/bitlbee -D"))
   (rcirc nil))
+
+(defun spacemacs/rcirc-notify-beep (msg)
+  "Override, beep when notifying with afplay"
+  (let ((player "afplay")
+        (sound (concat user-emacs-directory "site-misc/startup.ogg")))
+    (when (and (executable-find player)
+               (file-exists-p sound)))
+    (start-process "beep-process" nil player sound)))
+
+;;; Helm
+
+(defun djr//rcirc-is-server-buffer-p (buf)
+  (with-current-buffer buf rcirc-buffer-alist))
+
+(defun djr//rcirc-chat-buffers ()
+  (-filter
+   (lambda (buf)
+     (and
+      (eq 'rcirc-mode (with-current-buffer buf major-mode))
+      (not (djr//rcirc-is-server-buffer-p buf))))
+   (buffer-list)))
+
+(defun djr//rcirc-buffer-names ()
+  (mapcar (lambda (buffer)
+            (cons (buffer-name buffer) buffer))
+          (djr//rcirc-chat-buffers)))
+
+(setq djr-rcirc-buffers-source
+      '((name . "RCIRC buffers")
+        (candidates . djr//rcirc-buffer-names)
+        (action . (lambda (buffer) (switch-to-buffer buffer)))))
+
+(defun djr/helm-rcirc-buffers ()
+  (interactive)
+  (helm :sources 'djr-rcirc-buffers-source
+        :prompt "RCIRC buffers: "))

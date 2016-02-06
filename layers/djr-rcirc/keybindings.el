@@ -1,1 +1,3 @@
-(spacemacs/set-leader-keys "air" 'djr/rcirc)
+(spacemacs/set-leader-keys "oi" 'djr/rcirc)
+
+(bind-key "C-c SPC" 'djr/helm-rcirc-buffers)
