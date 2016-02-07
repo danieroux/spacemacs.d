@@ -37,10 +37,18 @@
       (not (djr//rcirc-is-server-buffer-p buf))))
    (buffer-list)))
 
+;; Adapted from rcirc.el
+(defun djr//rcirc-chat-buffers-sorted-by-last-activity ()
+  (sort (djr//rcirc-chat-buffers)
+        (lambda (b1 b2)
+          (let ((t1 (with-current-buffer b1 rcirc-last-post-time))
+                (t2 (with-current-buffer b2 rcirc-last-post-time)))
+            (time-less-p t2 t1)))))
+
 (defun djr//rcirc-buffer-names ()
   (mapcar (lambda (buffer)
             (cons (buffer-name buffer) buffer))
-          (djr//rcirc-chat-buffers)))
+          (djr//rcirc-chat-buffers-sorted-by-last-activity)))
 
 (setq djr-rcirc-buffers-source
       '((name . "RCIRC buffers")
