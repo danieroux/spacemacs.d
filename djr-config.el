@@ -38,15 +38,17 @@
      (t
       (propertize "%b" 'face 'mode-line-filename-face)))))
 
+(spaceline-define-segment evil-state-trimmer "Slight re-define of evil-state segment."
+  (let ((evil-mode-string (evil-state-property evil-state :tag t)))
+    (replace-regexp-in-string ".*<\\(.*\\)>.*" "\\1" evil-mode-string))
+  :when (bound-and-true-p evil-local-mode))
+
 (setq djr-spaceline-left
-      '(((evil-state) :separator "|" :face highlight-face)
+      '((evil-state-trimmer :face highlight-face)
         anzu auto-compile
-        (buffer-modified remote-host)
-        (djr-buffer-name :skip-alternate t)
-        major-mode
-        ((flycheck-error flycheck-warning flycheck-info)
-         :when active)
-        (version-control :when active)
+        ((flycheck-error flycheck-warning flycheck-info) :when active)
+        djr-buffer-name
+        ;(version-control :when active)
         (org-pomodoro :when active)
         (org-clock :when active)))
 
